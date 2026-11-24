@@ -1,0 +1,1758 @@
+<!doctype html>
+<html lang="uk">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Книга Змін</title>
+  <style>
+    /* ====== СТИЛІ БЛОКУ 1 ====== */
+    .bw-unique-wrapper {
+      width: 100%;
+      margin: 0;
+      padding: 0;
+    }
+
+    .bw-unique-block {
+      width: 100%;
+      background: #ffffff;
+      font-family: "Courier New", monospace;
+      padding: 40px 0;
+      margin: 0;
+      color: #000000;
+    }
+
+    .bw-unique-header {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      box-sizing: border-box;
+    }
+
+    .bw-unique-header-image {
+      flex: 1;
+      width: 50%;
+    }
+
+    .bw-unique-header-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border: none;
+    }
+
+    .bw-unique-header-content {
+      flex: 1;
+      width: 50%;
+    }
+
+    .bw-unique-header-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin: 0 0 20px 0;
+      color: #000000;
+      text-transform: uppercase;
+      line-height: 1.2;
+    }
+
+    .bw-unique-header-text {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      color: #333333;
+      margin: 0 0 30px 0;
+    }
+
+    /* Головні кнопки */
+    .bw-unique-more-btn,
+    .iching-button,
+    .bw-full-block__button {
+      display: inline-block;
+      padding: 15px 45px;
+      background: #000;
+      color: #fff;
+      font-weight: 600;
+      font-size: 16px;
+      text-transform: uppercase;
+      border-radius: 8px;
+      box-shadow: 4px 4px 0 #666;
+      cursor: pointer;
+      border: none;
+      transition: all 0.2s;
+    }
+
+    .bw-unique-more-btn:hover,
+    .iching-button:hover,
+    .bw-full-block__button:hover {
+      background: #fff;
+      color: #000;
+      box-shadow: 6px 6px 0 #000;
+      transform: translate(-2px, -2px);
+    }
+
+    .bw-unique-more-btn.hidden,
+    .iching-button.hidden,
+    .bw-full-block__button.hidden {
+      display: none;
+    }
+
+    /* Красиві кнопки МЕНЬШЕ для всіх блоків */
+    .bw-unique-less-btn,
+    .iching-less,
+    .bw-full-block__less {
+      display: inline-block !important;
+      padding: 12px 35px !important;
+      background: #ffffff !important;
+      color: #000000 !important;
+      font-weight: 700 !important;
+      font-size: 0.9rem !important;
+      text-transform: uppercase !important;
+      border-radius: 8px !important;
+      border: 2px solid #000000 !important;
+      box-shadow: 4px 4px 0 #ccc !important;
+      cursor: pointer !important;
+      margin-top: 20px !important;
+      transition: all 0.2s !important;
+    }
+
+    .bw-unique-less-btn:hover,
+    .iching-less:hover,
+    .bw-full-block__less:hover {
+      background: #000000;
+      color: #ffffff;
+      box-shadow: 6px 6px 0 #000;
+      transform: translate(-2px, -2px);
+    }
+
+    .bw-unique-hidden {
+      display: none;
+      width: 100%;
+      background: #ffffff;
+      border-top: 2px solid #000000;
+      margin-top: 40px;
+      padding: 40px 0;
+    }
+
+    .bw-unique-hidden.visible {
+      display: block;
+    }
+
+    .bw-iching * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    .bw-iching {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      background: #ffffff;
+      font-family: "Courier New", monospace;
+      color: #000000;
+    }
+
+    .bw-iching h1 {
+      font-size: 2rem;
+      text-align: center;
+      text-transform: uppercase;
+      border-bottom: 3px solid #000;
+      padding-bottom: 15px;
+      margin-bottom: 10px;
+      color: #000000;
+    }
+
+    .inst-wrapper {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    .inst-btn {
+      font-size: 1.1rem;
+      padding: 10px 30px;
+      background: #000;
+      color: #fff;
+      border: 2px solid #000;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      border-radius: 8px;
+      transition: 0.2s;
+    }
+
+    .inst-btn:hover {
+      background: #fff;
+      color: #000;
+      box-shadow: 4px 4px 0 #000;
+      transform: translate(-2px, -2px);
+    }
+
+    .instruction {
+      display: none;
+      border: 3px solid #000;
+      padding: 20px;
+      margin-bottom: 30px;
+      background: #f9f9f9;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    .instruction.visible {
+      display: block;
+    }
+
+    .instruction h3 {
+      font-size: 1.5rem;
+      border-bottom: 2px solid #000;
+      padding-bottom: 10px;
+      margin-bottom: 15px;
+    }
+
+    .instruction h4 {
+      font-size: 1.2rem;
+      margin: 15px 0 5px;
+    }
+
+    .instruction ul {
+      margin-left: 25px;
+      margin-bottom: 15px;
+    }
+
+    .close-btn {
+      display: inline-block;
+      padding: 8px 25px;
+      background: #000;
+      color: #fff;
+      border: 2px solid #000;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-top: 15px;
+    }
+
+    .close-btn:hover {
+      background: #fff;
+      color: #000;
+    }
+
+    .hint {
+      text-align: center;
+      font-size: 1.1rem;
+      padding: 8px;
+      border: 2px solid #000;
+      background: #f0f0f0;
+      margin: 20px 0;
+      text-transform: uppercase;
+    }
+
+    .bw-iching .grid {
+      display: grid;
+      grid-template-columns: repeat(8, 1fr);
+      gap: 4px;
+      border: 2px solid #000;
+      padding: 10px;
+      background: #fff;
+      margin-bottom: 30px;
+    }
+
+    .bw-iching .card {
+      aspect-ratio: 1 / 1;
+      background: #f8f8f8;
+      border: 1px solid #000;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 0.9rem;
+      font-weight: 900;
+      line-height: 1;
+      padding: 2px 0;
+    }
+
+    .bw-iching .card:hover {
+      background: #e0e0e0;
+      border-width: 2px;
+    }
+
+    .bw-iching .card.selected {
+      background: #ccc;
+      border-width: 3px;
+    }
+
+    .bw-iching .lines {
+      display: flex;
+      flex-direction: column-reverse;
+      align-items: center;
+      font-size: 1.1rem;
+      font-weight: 900;
+      line-height: 1;
+    }
+
+    .bw-iching .lines span {
+      display: block;
+      font-size: 1.2rem;
+      font-weight: 900;
+      line-height: 1;
+    }
+
+    .bw-iching .num {
+      font-size: 0.6rem;
+      font-weight: bold;
+      border-top: 1px solid #000;
+      padding-top: 2px;
+      margin-top: 2px;
+      width: 70%;
+      text-align: center;
+    }
+
+    .interpretations {
+      border-top: 4px solid #000;
+      padding-top: 30px;
+    }
+
+    .interp-header {
+      font-size: 1.8rem;
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 30px;
+      text-transform: uppercase;
+    }
+
+    .interp-block {
+      border: 2px solid #000;
+      padding: 25px;
+      margin-bottom: 40px;
+      background: #fafafa;
+    }
+
+    .interp-block h3 {
+      font-size: 1.8rem;
+      border-bottom: 3px solid #000;
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+    }
+
+    .badge {
+      display: inline-block;
+      background: #000;
+      color: #fff;
+      padding: 5px 15px;
+      margin-right: 15px;
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin: 20px auto 0;
+      padding: 10px 25px;
+      background: #000;
+      color: #fff;
+      border: 2px solid #000;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-align: center;
+    }
+
+    .back-link:hover {
+      background: #fff;
+      color: #000;
+    }
+
+    .less-top,
+    .less-bottom {
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    /* ====== СТИЛІ БЛОКУ 2 ====== */
+    .iching-block {
+      width: 100%;
+      background: #fff;
+      font-family: inherit;
+      padding: 40px 0;
+      border-top: 5px solid #000;
+    }
+
+    .iching-inner {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      box-sizing: border-box;
+    }
+
+    .iching-image {
+      flex: 1;
+      width: 50%;
+    }
+
+    .iching-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+    }
+
+    .iching-content {
+      flex: 1;
+      width: 50%;
+    }
+
+    .iching-title {
+      font-family: "Courier New", monospace;
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin: 0 0 20px 0;
+      color: #000;
+      text-transform: uppercase;
+    }
+
+    .iching-text {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      color: #444;
+      margin: 0 0 30px 0;
+    }
+
+    .iching-hidden {
+      display: none;
+      padding: 40px;
+      margin-top: 40px;
+      width: 100%;
+      background: #ffffff !important;
+      box-sizing: border-box;
+    }
+
+    .iching-hidden.visible {
+      display: block;
+    }
+
+    .iching-center {
+      display: flex;
+      justify-content: center;
+    }
+
+    /* ====== СТИЛІ БЛОКУ 3 ====== */
+    .bw-full-block {
+      width: 100%;
+      background: #fff;
+      font-family: inherit;
+      padding: 40px 0;
+      border-top: 5px solid #000;
+    }
+
+    .bw-full-block__inner {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      box-sizing: border-box;
+    }
+
+    .bw-full-block__image {
+      flex: 1;
+      width: 50%;
+    }
+
+    .bw-full-block__image img {
+      width: 100%;
+      height: auto;
+      display: block;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+    }
+
+    .bw-full-block__content {
+      flex: 1;
+      width: 50%;
+    }
+
+    .bw-full-block__title {
+      font-family: "Courier New", monospace;
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin: 0 0 20px 0;
+      color: #000;
+      text-transform: uppercase;
+    }
+
+    .bw-full-block__text {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      color: #444;
+      margin: 0 0 30px 0;
+    }
+
+    .bw-full-block__hidden {
+      display: none;
+      background: #f5f5f5;
+      padding: 40px;
+      margin-top: 40px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .bw-full-block__hidden.visible {
+      display: block;
+    }
+
+    .bw-full-block__center {
+      display: flex;
+      justify-content: center;
+    }
+
+    /* Анімація монет для Блоку 2 і 3 */
+    @keyframes coinFlip {
+      0% {
+        transform: translateY(0) rotateX(0) scale(1);
+        opacity: 1;
+      }
+
+      20% {
+        transform: translateY(-20px) rotateX(180deg) scale(1.1);
+        opacity: 0.8;
+      }
+
+      40% {
+        transform: translateY(-30px) rotateX(360deg) scale(1.2);
+        opacity: 0.9;
+      }
+
+      60% {
+        transform: translateY(-20px) rotateX(540deg) scale(1.1);
+        opacity: 0.8;
+      }
+
+      80% {
+        transform: translateY(-5px) rotateX(720deg) scale(1.05);
+        opacity: 0.9;
+      }
+
+      100% {
+        transform: translateY(0) rotateX(1080deg) scale(1);
+        opacity: 1;
+      }
+    }
+
+    .coin-flip {
+      animation: coinFlip 0.8s ease-in-out;
+      display: inline-block;
+    }
+
+    .coin {
+      font-size: 50px;
+      transition:
+        opacity 0.3s,
+        filter 0.3s;
+      display: inline-block;
+      color: #fff;
+    }
+
+    @media (max-width: 768px) {
+      /* Виправлення для заголовка "ПОВНЕ ТЛУМАЧЕННЯ" на мобільних */
+      .interp-header {
+        font-size: 1.2rem !important;
+        /* зменшуємо шрифт */
+        margin-top: 30px !important;
+        /* додаємо відступ зверху, щоб не налазило на сітку */
+        margin-bottom: 20px !important;
+        line-height: 1.4 !important;
+        padding: 0 10px !important;
+        /* трохи відступу по боках */
+        word-break: break-word !important;
+        /* щоб довге слово не вилазило */
+      }
+
+      .bw-unique-header,
+      .iching-inner,
+      .bw-full-block__inner {
+        flex-direction: column;
+        gap: 30px;
+      }
+
+      .bw-unique-header-image,
+      .bw-unique-header-content,
+      .iching-image,
+      .iching-content,
+      .bw-full-block__image,
+      .bw-full-block__content {
+        width: 100%;
+      }
+
+      .bw-iching .grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+      }
+
+      div[style*="flex-direction: row"] {
+        flex-direction: column !important;
+      }
+
+      div[style*="flex: 0 0 180px"] {
+        flex: 0 0 auto !important;
+        width: 100% !important;
+        margin-bottom: 15px;
+      }
+
+      #hexagramLines,
+      #hexagramLinesAuto {
+        font-size: 45px !important;
+        min-height: 180px !important;
+      }
+
+      #predictionText,
+      #predictionTextAuto {
+        font-size: 14px !important;
+        min-height: auto !important;
+      }
+
+      .coin {
+        font-size: 24px !important;
+      }
+    }
+
+    @media (max-width: 480px) {
+      #hexagramLines,
+      #hexagramLinesAuto {
+        font-size: 40px !important;
+        min-height: 160px !important;
+      }
+    }
+
+    /* ==========================================
+       МОБІЛЬНА ВЕРСІЯ: ЗАГОЛОВКИ, ТЕКСТ, КНОПКИ
+       ========================================== */
+    @media (max-width: 768px) {
+      /* --- 1. ЗАГОЛОВКИ (РОЗМІРОМ ЯК ШАПКА) --- */
+      .bw-unique-header-title {
+        font-size: 1.9rem !important;
+        line-height: 1.2 !important;
+      }
+
+      .bw-iching h1 {
+        font-size: 1.9rem !important;
+        line-height: 1.2 !important;
+      }
+
+      .iching-title,
+      .bw-full-block__title {
+        font-size: 1.9rem !important;
+        line-height: 1.2 !important;
+      }
+
+      .interp-header {
+        font-size: 1.5rem !important;
+        line-height: 1.3 !important;
+      }
+
+      /* --- 2. ДРУГОРЯДНИЙ ТЕКСТ (ТРОХИ МЕНШЕ) --- */
+      .bw-unique-header-text,
+      .iching-text,
+      .bw-full-block__text,
+      .bw-iching p {
+        font-size: 0.9rem !important;
+        line-height: 1.5 !important;
+      }
+
+      .interp-block p,
+      .interp-block li {
+        font-size: 0.9rem !important;
+        line-height: 1.4 !important;
+      }
+
+      /* --- 3. КНОПКИ (МАЛЕНЬКІ) --- */
+      .bw-unique-more-btn,
+      .iching-button,
+      .bw-full-block__button {
+        font-size: 0.75rem !important;
+        padding: 10px 20px !important;
+      }
+
+      .inst-btn {
+        font-size: 0.8rem !important;
+        padding: 8px 15px !important;
+      }
+
+      .bw-unique-less-btn,
+      .iching-less,
+      .bw-full-block__less {
+        font-size: 0.7rem !important;
+        padding: 8px 15px !important;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .instruction,
+      #b2InstPopup {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+        padding: 15px !important;
+        box-sizing: border-box !important;
+      }
+    }
+
+    @media (max-width: 768px) {
+      /* 1. Прибираємо будь-яку горизонтальну прокрутку */
+      body,
+      html {
+        overflow-x: hidden !important;
+      }
+
+      /* 2. Розтягуємо всі контейнери, які були з жорсткою шириною */
+      div[style*="flex: 1 1 400px"],
+      div[style*="min-width: 320px"] {
+        flex: 1 1 100% !important;
+        min-width: 100% !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+      }
+
+      /* 3. Розтягуємо внутрішні колонки (де монети і текст) */
+      div[style*="flex-direction: row"] {
+        flex-direction: column !important;
+        gap: 15px !important;
+      }
+
+      div[style*="flex: 0 0 180px"] {
+        flex: 0 0 100% !important;
+        width: 100% !important;
+      }
+
+      /* 4. Розтягуємо чорні картки на всю ширину */
+      .iching-hidden > div,
+      .bw-full-block__hidden > div {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+        padding: 10px !important;
+        box-sizing: border-box !important;
+      }
+
+      /* 5. Робимо текст всередині меншим, щоб влізло */
+      #predictionTextAuto,
+      #predictionText {
+        width: 100% !important;
+        min-width: 0 !important;
+      }
+    }
+    @media (max-width: 768px) {
+      /* 1. Вирівнюємо контейнери, в яких лежать кнопки */
+      .bw-unique-header-content,
+      .iching-content,
+      .bw-full-block__content,
+      .inst-wrapper,
+      .iching-center,
+      .bw-full-block__center {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+      }
+
+      /* 2. Вирівнюємо самі кнопки (Відкрити, Кинути, Довіритися) */
+      .bw-unique-more-btn,
+      .iching-button,
+      .bw-full-block__button,
+      .inst-btn {
+        margin-left: auto !important;
+        margin-right: auto !important;
+        display: inline-block !important;
+        text-align: center !important;
+      }
+
+      /* 3. Вирівнюємо кнопки "МЕНЬШЕ" */
+      .bw-unique-less-btn,
+      .iching-less,
+      .bw-full-block__less {
+        margin-left: auto !important;
+        margin-right: auto !important;
+        display: block !important;
+      }
+
+      /* 4. Вирівнюємо текст під заголовками (щоб він теж був по центру) */
+      .bw-unique-header-text,
+      .iching-text,
+      .bw-full-block__text {
+        text-align: center !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+      }
+      /* Змушуємо контейнер WordPress ігнорувати обмеження ширини */
+      .entry-content,
+      .site-content,
+      .container,
+      .ast-container,
+      .wp-block-post-content {
+        max-width: 100% !important;
+        width: 100% !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        margin: 0 !important;
+      }
+      @media (max-width: 768px) {
+        /* Примусово ховаємо кнопки, якщо до них додано клас hidden */
+        .bw-unique-more-btn.hidden,
+        .iching-button.hidden,
+        .bw-full-block__button.hidden,
+        .inst-btn.hidden {
+          display: none !important;
+        }
+      }
+    }
+  </style>
+
+  <!-- ================= БЛОК 1: СІТКА ================= -->
+  <section id="bw-unique-wrapper">
+    <div class="bw-unique-wrapper">
+      <div class="bw-unique-block">
+        <div class="bw-unique-header">
+          <div class="bw-unique-header-image">
+            <img
+              src="https://teal-barracuda-888676.hostingersite.com/wp-content/uploads/2026/02/gemini-2.5-flash-image_виділи_з_цього_забраження_тільки_фото_зобра-0-1-1.jpg"
+              alt="Монети"
+            />
+          </div>
+          <div class="bw-unique-header-content">
+            <h2 class="bw-unique-header-title" id="titleBlock1">
+              64 ГЕКСАГРАМИ<br />І-ЦЗІН · КНИГА ЗМІН
+            </h2>
+            <p class="bw-unique-header-text">
+              Повне тлумачення всіх 64 гексаграм: символізм, значення для
+              любові, кар'єри, здоров'я.
+            </p>
+
+            <button
+              class="bw-unique-more-btn"
+              id="bwUniqueMoreBtn"
+              onclick="
+                document
+                  .getElementById('bwUniqueHidden')
+                  .classList.add('visible');
+                this.classList.add('hidden');
+              "
+            >
+              ВІДКРИТИ ВСІ 64 ГЕКСАГРАМИ
+            </button>
+          </div>
+        </div>
+
+        <div class="bw-unique-hidden" id="bwUniqueHidden">
+          <div class="bw-iching">
+            <h1>⚉ І-ЦЗІН · 64 ГЕКСАГРАМИ ⚉</h1>
+
+            <div class="inst-wrapper">
+              <button class="inst-btn" id="bwShowInst">
+                📖 ЧИТАТИ ІНСТРУКЦІЮ
+              </button>
+            </div>
+
+            <div class="less-top">
+              <button class="bw-unique-less-btn" id="btnLessTop">МЕНЬШЕ</button>
+            </div>
+
+            <div class="instruction" id="instructionPopup">
+              <h2>🎲 ЯК ВОРОЖИТИ НА ТРЬОХ МОНЕТАХ</h2>
+              <h3>📌 ЩО ПОТРІБНО:</h3>
+              <p>
+                Три однакові монети (будь-якої країни), аркуш паперу, ручка та
+                спокійне місце, де вас ніхто не відволікатиме.
+              </p>
+              <h3>🪙 ЯК ВИЗНАЧАТИ ЛІНІЇ:</h3>
+              <p>
+                Визначте, який бік монети буде
+                <strong>Ян (чоловіча, активна енергія)</strong>, а який —
+                <strong>Інь (жіноча, пасивна енергія)</strong>. Зазвичай:
+              </p>
+              <ul>
+                <li>
+                  <strong>Орел (герб, цифра)</strong> — Ян, суцільна лінія ⚊
+                </li>
+                <li>
+                  <strong>Решка (зворотний бік)</strong> — Інь, перервана лінія
+                  ⚋
+                </li>
+              </ul>
+              <h3>📝 ПОКРОКОВА ІНСТРУКЦІЯ:</h3>
+              <ol>
+                <li>
+                  <strong>Сформулюйте питання</strong> — чітко і без варіантів
+                  "так" чи "ні". І-Цзін описує ситуацію, а не дає простих
+                  відповідей. Наприклад: "Яка ситуація в моїх стосунках?" або
+                  "Що мене чекає на новій роботі?"
+                </li>
+                <li>
+                  <strong>Підкиньте три монети</strong> одночасно. Зробіть це 6
+                  разів — кожен кидок дає одну лінію майбутньої гексаграми.
+                </li>
+                <li>
+                  <strong>Запишіть результат кожного кидка:</strong>
+                  <ul>
+                    <li>
+                      <strong>3 орли</strong> — стара Ян, суцільна лінія ⚊ (ця
+                      лінія змінюється на протилежну)
+                    </li>
+                    <li>
+                      <strong>2 орли + 1 решка</strong> — молода Інь, перервана
+                      лінія ⚋ (статична)
+                    </li>
+                    <li>
+                      <strong>1 орел + 2 решки</strong> — молодий Ян, суцільна
+                      лінія ⚊ (статичний)
+                    </li>
+                    <li>
+                      <strong>3 решки</strong> — стара Інь, перервана лінія ⚋
+                      (ця лінія змінюється на протилежну)
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <strong>Будуйте гексаграму ЗНИЗУ ВГОРУ:</strong> <br />Перший
+                  кидок — нижня (перша) лінія. <br />Шостий кидок — верхня
+                  (шоста) лінія.
+                </li>
+                <li>
+                  <strong>Знайдіть свою гексаграму двома способами:</strong>
+                  <ul>
+                    <li>
+                      За номером — скористайтесь кнопками швидкого пошуку (1-64)
+                      прямо під інструкцією.
+                    </li>
+                    <li>
+                      Або перегляньте всі 64 гексаграми в сітці нижче та
+                      натисніть на ту, що збігається з вашою комбінацією ліній.
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <strong>Після натискання</strong> сторінка автоматично
+                  прокрутить вас до повного тлумачення обраної гексаграми.
+                </li>
+              </ol>
+              <h3>💡 ВАЖЛИВО ПРО ЗМІННІ ЛІНІЇ:</h3>
+              <p>
+                Якщо у вашій гексаграмі є "старі лінії" (3 орли або 3 решки), це
+                означає, що ситуація змінюється. Прочитайте спочатку тлумачення
+                основної гексаграми, а потім — похідної (тієї, що утворюється,
+                якщо замінити всі старі лінії на протилежні). Похідна гексаграма
+                показує, до чого призведуть зміни.
+              </p>
+              <h3>📖 ПРИКЛАД:</h3>
+              <p>
+                Ви кинули монети 6 разів і отримали таку послідовність (знизу
+                вгору):<br />
+                1 кидок: 2 орли + 1 решка → перервана ⚋<br />
+                2 кидок: 1 орел + 2 решки → суцільна ⚊<br />
+                3 кидок: 3 орли → суцільна ⚊ (змінна)<br />
+                4 кидок: 2 орли + 1 решка → перервана ⚋<br />
+                5 кидок: 1 орел + 2 решки → суцільна ⚊<br />
+                6 кидок: 3 решки → перервана ⚋ (змінна)
+              </p>
+              <p>
+                Знайдіть в сітці гексаграму з лініями ⚋<br />⚊<br />⚊<br />⚋<br />⚊<br />⚋
+                (знизу вгору) — це гексаграма №40 "Цзє — Визволення". Натисніть
+                на неї, щоб прочитати тлумачення.
+              </p>
+              <button class="close-btn" id="bwCloseInst">ЗАКРИТИ</button>
+            </div>
+
+            <div class="hint">
+              ▼ НАТИСНИ НА КВАДРАТ, ЩОБ ПЕРЕЙТИ ДО ТЛУМАЧЕННЯ ▼
+            </div>
+
+            <div class="grid" id="bwGrid"></div>
+
+            <div class="interpretations">
+              <div
+                class="interp-header"
+                id="headerInterpretations"
+                style="
+                  cursor: pointer;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  gap: 10px;
+                "
+              >
+                📜 ПОВНЕ ТЛУМАЧЕННЯ 64 ГЕКСАГРАМ
+                <span
+                  id="interpArrow"
+                  style="font-size: 1.2rem; transition: transform 0.3s"
+                  >▼</span
+                >
+              </div>
+              <div id="bwTexts"></div>
+              <div
+                class="less-bottom"
+                style="text-align: center; margin-top: 30px"
+              >
+                <button
+                  class="bw-unique-less-btn"
+                  id="btnLessBottom"
+                  onclick="
+                    document
+                      .getElementById('bwUniqueHidden')
+                      .classList.remove('visible');
+                    document
+                      .getElementById('bwUniqueMoreBtn')
+                      .classList.remove('hidden');
+                    document.getElementById('bwTexts').style.display = 'none';
+                    document
+                      .getElementById('titleBlock1')
+                      .scrollIntoView({ behavior: 'smooth' });
+                  "
+                >
+                  МЕНЬШЕ
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- ================= БЛОК 2: РУЧНЕ ПІДКИДАННЯ ================= -->
+  <section id="iching-block">
+    <div class="iching-block">
+      <div class="iching-inner">
+        <div class="iching-image">
+          <img
+            src="https://teal-barracuda-888676.hostingersite.com/wp-content/uploads/2026/02/gemini-2.5-flash-image_виділи_з_цього_забраження_тільки_фото_зобра-0-1.jpg"
+            alt="Монети"
+          />
+        </div>
+        <div class="iching-content">
+          <h2 class="iching-title">І-ЦЗІН: ОРАКУЛ ДОЛІ</h2>
+          <p class="iching-text">
+            1. Зосередьтесь на питанні.<br />2. Кидайте монети (6 разів):<br />•
+            🪙 Орел — натисніть "Орел"<br />• 🪙 Решка — натисніть "Решка"<br />3.
+            Заповніть 6 ліній — слідкуйте за індикатором прогресу.<br />4.
+            Отримайте тлумачення — натисніть「ПЕРЕДБАЧЕННЯ」.<br />5. Читайте
+            розгорнуту відповідь.
+          </p>
+
+          <button
+            class="iching-button"
+            id="ichingShowBtn"
+            onclick="
+              document.getElementById('ichingContent').classList.add('visible');
+              this.classList.add('hidden');
+            "
+          >
+            КИНУТИ МОНЕТИ ВЛАСНОРУЧ
+          </button>
+        </div>
+      </div>
+
+      <div class="iching-hidden" id="ichingContent">
+        <div style="text-align: center; margin-bottom: 25px">
+          <button
+            class="inst-btn"
+            id="b2ShowInstBtn"
+            onclick="
+              document.getElementById('b2InstPopup').style.display = 'block';
+              this.style.display = 'none';
+            "
+          >
+            📖 ЧИТАТИ ІНСТРУКЦІЮ
+          </button>
+        </div>
+
+        <div
+          id="b2InstPopup"
+          style="
+            display: none;
+            background: #f9f9f9;
+            border: 3px solid #000;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto 30px;
+            color: #444;
+            line-height: 1.8;
+          "
+        >
+          <p style="margin: 0; text-align: left">
+            <strong>ІНСТРУКЦІЯ З ВИКОРИСТАННЯ:</strong><br /><br />
+            🎯 <strong>ЯК ОТРИМАТИ ПЕРЕДБАЧЕННЯ:</strong><br />
+            1. ЗОСЕРЕДЬТЕСЯ НА ПИТАННІ<br />Подумайте про те, що вас хвилює.
+            Сформулюйте питання чітко і зосередьтесь на ньому.<br />
+            2. Візьміть три реальні монети, КИДАЙТЕ МОНЕТИ (6 РАЗІВ)<br />У вас
+            випадуть три монети в ряд. Для кожної лінії (з 6-ти) натискайте три
+            рази (згідно тої послідовності в який випали монети):<br />
+            • 🪙 ОРЕЛ – якщо випав орел <br />
+            • 🪙 РЕШКА – якщо випала решка <br />
+            Потрібно зробити 3 кидки для кожної лінії.<br />Індикатор з 6 крапок
+            показує, скільки ліній вже заповнено. Гексаграма будується
+            автоматично.<br />
+            4. ОТРИМАЙТЕ ТЛУМАЧЕННЯ<br />Після заповнення всіх 6 ліній кнопка
+            「ПЕРЕДБАЧЕННЯ」 стане активною. Натисніть її.<br />
+            5. ЧИТАЙТЕ РОЗГОРНУТЕ ТЛУМАЧЕННЯ<br />У правому квадратному блоці
+            з'явиться повне тлумачення гексаграми: Символіка, Загальне значення,
+            Любов та стосунки, Кар'єра та фінанси, Здоров'я, Мудрість
+            гексаграми.<br />
+            6. ПОЧАТИ ЗАНОВО<br />Натисніть 「ЗАНОВО」, щоб очистити всі лінії
+            та зробити новий запит.<br /><br />
+            <strong>ПОРАДИ:</strong><br />
+            • Довіряйте своїй інтуїції<br />
+            • Не ставте одне й те саме питання багаторазово<br />
+            • Найкращий час для ворожіння – ранок або вечір<br />
+            • Ставтеся до відповідей як до поради, а не як до остаточного вироку
+          </p>
+          <div style="text-align: center; margin-top: 15px">
+            <button
+              class="close-btn"
+              onclick="
+                document.getElementById('b2InstPopup').style.display = 'none';
+                document.getElementById('b2ShowInstBtn').style.display =
+                  'inline-block';
+              "
+            >
+              ЗАКРИТИ
+            </button>
+          </div>
+        </div>
+
+        <div
+          style="
+            margin: 0 auto;
+            max-width: 1200px;
+            font-family: &quot;Georgia&quot;, serif;
+            background: #1a1a1a;
+            color: #e0e0e0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-sizing: border-box;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+          "
+        >
+          <div
+            style="
+              text-align: center;
+              width: 100%;
+              border-bottom: 1px solid #666;
+              padding-bottom: 10px;
+              margin-bottom: 15px;
+            "
+          >
+            <h1
+              style="
+                font-size: clamp(24px, 4vw, 32px);
+                color: #fff;
+                margin: 0 0 5px 0;
+                letter-spacing: 2px;
+              "
+            >
+              📜 КНИГА ЗМІН
+            </h1>
+            <p style="color: #aaa; font-style: italic; margin: 0">
+              І-Цзін — 64 гексаграми долі
+            </p>
+          </div>
+
+          <div
+            style="
+              display: flex;
+              flex-wrap: wrap;
+              justify-content: center;
+              width: 100%;
+              gap: 20px;
+            "
+          >
+            <div
+              style="
+                flex: 1 1 400px;
+                min-width: 320px;
+                background: #2a2a2a;
+                border-radius: 15px;
+                padding: 20px;
+                display: flex;
+                flex-direction: column;
+                border: 1px solid #666;
+              "
+            >
+              <h2
+                style="
+                  color: #aaa;
+                  text-align: center;
+                  border-bottom: 1px solid #666;
+                  padding-bottom: 10px;
+                  margin: 0 0 15px 0;
+                "
+              >
+                🔮 ПОБУДОВА ГЕКСАГРАМИ
+              </h2>
+
+              <div
+                style="
+                  background: #222;
+                  border-radius: 30px;
+                  padding: 8px 15px;
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: center;
+                  border: 1px solid #666;
+                  margin-bottom: 15px;
+                "
+              >
+                <div style="display: flex; gap: 8px">
+                  <span
+                    id="progress-1"
+                    style="
+                      width: 12px;
+                      height: 12px;
+                      border-radius: 50%;
+                      background: #333;
+                      border: 1px solid #666;
+                    "
+                  ></span>
+                  <span
+                    id="progress-2"
+                    style="
+                      width: 12px;
+                      height: 12px;
+                      border-radius: 50%;
+                      background: #333;
+                      border: 1px solid #666;
+                    "
+                  ></span>
+                  <span
+                    id="progress-3"
+                    style="
+                      width: 12px;
+                      height: 12px;
+                      border-radius: 50%;
+                      background: #333;
+                      border: 1px solid #666;
+                    "
+                  ></span>
+                  <span
+                    id="progress-4"
+                    style="
+                      width: 12px;
+                      height: 12px;
+                      border-radius: 50%;
+                      background: #333;
+                      border: 1px solid #666;
+                    "
+                  ></span>
+                  <span
+                    id="progress-5"
+                    style="
+                      width: 12px;
+                      height: 12px;
+                      border-radius: 50%;
+                      background: #333;
+                      border: 1px solid #666;
+                    "
+                  ></span>
+                  <span
+                    id="progress-6"
+                    style="
+                      width: 12px;
+                      height: 12px;
+                      border-radius: 50%;
+                      background: #333;
+                      border: 1px solid #666;
+                    "
+                  ></span>
+                </div>
+                <span id="current-line" style="color: #aaa; font-size: 14px"
+                  >Лінія 1</span
+                >
+              </div>
+
+              <div
+                style="
+                  background: #222;
+                  border-radius: 10px;
+                  border: 1px solid #666;
+                  padding: 15px;
+                  margin-bottom: 15px;
+                  text-align: center;
+                "
+              >
+                <div
+                  style="
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    margin-bottom: 10px;
+                  "
+                >
+                  <span style="color: #fff; font-weight: bold; font-size: 16px"
+                    >🎲 Кидання монет</span
+                  >
+                  <span id="coin-count" style="color: #aaa; font-size: 14px"
+                    >0/3</span
+                  >
+                </div>
+                <div
+                  style="
+                    display: flex;
+                    gap: 15px;
+                    justify-content: center;
+                    margin-bottom: 15px;
+                  "
+                >
+                  <button
+                    onclick="tossCoin('eagle')"
+                    style="
+                      padding: 10px 20px;
+                      background: #333;
+                      color: #fff;
+                      border: 1px solid #666;
+                      border-radius: 8px;
+                      cursor: pointer;
+                      flex: 1;
+                      font-size: 15px;
+                    "
+                  >
+                    <span style="font-size: 18px">🪙</span> Орел
+                  </button>
+                  <button
+                    onclick="tossCoin('tails')"
+                    style="
+                      padding: 10px 20px;
+                      background: #333;
+                      color: #fff;
+                      border: 1px solid #666;
+                      border-radius: 8px;
+                      cursor: pointer;
+                      flex: 1;
+                      font-size: 15px;
+                    "
+                  >
+                    <span style="font-size: 18px; filter: brightness(0.5)"
+                      >🪙</span
+                    >
+                    Решка
+                  </button>
+                </div>
+                <div
+                  id="coins-display"
+                  style="
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 15px;
+                    font-size: 28px;
+                    min-height: 50px;
+                    background: #1a1a1a;
+                    padding: 10px;
+                    border-radius: 8px;
+                    border: 1px solid #666;
+                  "
+                ></div>
+                <div
+                  id="line-result"
+                  style="
+                    margin-top: 10px;
+                    text-align: center;
+                    font-size: 15px;
+                    color: #aaa;
+                  "
+                ></div>
+              </div>
+
+              <div
+                style="
+                  background: #222;
+                  border-radius: 10px;
+                  border: 1px solid #666;
+                  padding: 15px;
+                  margin-bottom: 15px;
+                  box-sizing: border-box;
+                "
+              >
+                <div
+                  style="
+                    text-align: center;
+                    color: #aaa;
+                    font-size: 16px;
+                    margin-bottom: 10px;
+                  "
+                >
+                  📊 ГЕКСАГРАМА
+                </div>
+                <div
+                  style="
+                    background: #1a1a1a;
+                    border-radius: 8px;
+                    border: 1px solid #666;
+                    padding: 15px 0;
+                    display: flex;
+                    justify-content: center;
+                  "
+                >
+                  <div
+                    id="hexagram-display"
+                    style="
+                      font-size: 80px;
+                      line-height: 0.7;
+                      text-align: center;
+                      color: #fff;
+                      font-family: &quot;Arial Unicode MS&quot;, monospace;
+                      width: 85%;
+                    "
+                  ></div>
+                </div>
+              </div>
+
+              <div
+                style="
+                  display: flex;
+                  gap: 15px;
+                  justify-content: center;
+                  margin-top: auto;
+                "
+              >
+                <button
+                  onclick="getPredictionBlock2()"
+                  id="predict-btn"
+                  style="
+                    padding: 12px 20px;
+                    background: #4a4a4a;
+                    color: #fff;
+                    border: 1px solid #666;
+                    border-radius: 30px;
+                    flex: 1;
+                    max-width: 180px;
+                    cursor: pointer;
+                    font-family: &quot;Georgia&quot;, serif;
+                    font-size: 15px;
+                    opacity: 0.5;
+                  "
+                  disabled=""
+                >
+                  🔮 ПЕРЕДБАЧЕННЯ
+                </button>
+                <button
+                  onclick="restartBlock2()"
+                  style="
+                    padding: 12px 20px;
+                    background: #333;
+                    color: #aaa;
+                    border: 1px solid #666;
+                    border-radius: 30px;
+                    flex: 1;
+                    max-width: 180px;
+                    cursor: pointer;
+                    font-family: &quot;Georgia&quot;, serif;
+                    font-size: 15px;
+                  "
+                >
+                  🔄 ЗАНОВО
+                </button>
+              </div>
+            </div>
+
+            <div
+              id="prediction-container"
+              style="
+                flex: 1 1 400px;
+                min-width: 320px;
+                background: #222;
+                border-radius: 15px;
+                padding: 20px;
+                display: none;
+                flex-direction: column;
+                border: 1px solid #666;
+                overflow: hidden;
+              "
+            >
+              <h2
+                style="
+                  color: #aaa;
+                  text-align: center;
+                  border-bottom: 1px solid #666;
+                  padding-bottom: 8px;
+                  margin: 0 0 10px 0;
+                  font-size: 20px;
+                "
+              >
+                📖 ТЛУМАЧЕННЯ
+              </h2>
+              <div
+                id="prediction-content"
+                style="
+                  color: #fff;
+                  font-size: 13px;
+                  line-height: 1.4;
+                  overflow-y: auto;
+                  padding-right: 5px;
+                  flex: 1;
+                "
+              ></div>
+            </div>
+          </div>
+        </div>
+        <div class="iching-center">
+          <button
+            class="iching-less"
+            onclick="
+              document
+                .getElementById('ichingContent')
+                .classList.remove('visible');
+              document
+                .getElementById('ichingShowBtn')
+                .classList.remove('hidden');
+            "
+          >
+            МЕНЬШЕ
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- ================= БЛОК 3: АВТОМАТИЧНЕ ПІДКИДАННЯ ================= -->
+  <section id="bw-full-block">
+    <div class="bw-full-block">
+      <div
+        class="bw-full-block__inner"
+        style="max-width: 1200px; margin: 0 auto; padding: 0 20px"
+      >
+        <div class="bw-full-block__image">
+          <img
+            src="https://teal-barracuda-888676.hostingersite.com/wp-content/uploads/2026/02/gemini-2.5-flash-image_виділи_з_цього_забраження_тільки_фото_драко-0.jpg"
+            alt="Дракон"
+          />
+        </div>
+        <div class="bw-full-block__content">
+          <h2 class="bw-full-block__title">
+            Три монети. Шість кидків. <br />Одна доля.
+          </h2>
+          <p class="bw-full-block__text">
+            Як користуватися Книгою Змін<br />
+            Сформулюйте питання — чітко й щиро, без зайвих слів.<br />
+            Кидайте монети — натискайте кнопку, щоб отримати результат кожної
+            лінії.<br />
+            Спостерігайте — суцільна лінія (⚊) — Ян, переривчаста (⚋) —
+            Інь.<br />
+            Повторіть 6 разів — поки не складеться повна гексаграма.<br />
+            Отримайте тлумачення — номер, назву, символіку та ключові теми.<br />
+            Почніть заново — кнопка «Почати заново» для нового питання.
+          </p>
+
+          <button
+            class="bw-full-block__button"
+            id="showMoreBtn"
+            onclick="
+              document.getElementById('moreContent').classList.add('visible');
+              this.classList.add('hidden');
+            "
+          >
+            ДОВІРИТИСЯ ДОЛІ (АВТОМАТИЧНО)
+          </button>
+        </div>
+      </div>
+
+      <div class="bw-full-block__hidden" id="moreContent">
+        <div
+          style="
+            margin: 0 auto;
+            max-width: 1200px;
+            font-family: &quot;Georgia&quot;, serif;
+            background: #1a1a1a;
+            color: #e0e0e0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-sizing: border-box;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+          "
+        >
+          <h2
+            style="
+              letter-spacing: 2px;
+              margin: 0 0 5px 0;
+              font-size: clamp(24px, 6vw, 32px);
+              color: #fff;
+              font-weight: 300;
+              text-transform: uppercase;
+            "
+          >
+            І-ЦЗІН
+          </h2>
+          <div
+            style="
+              width: 60px;
+              height: 1px;
+              background: #fff;
+              margin: 8px auto 12px;
+              opacity: 0.5;
+            "
+          ></div>
+
+          <div
+            style="
+              font-size: clamp(14px, 4vw, 16px);
+              margin: 0 0 15px 0;
+              line-height: 1.5;
+              padding: 0 5px;
+              color: #ccc;
+              font-style: italic;
+            "
+          >
+            Три монети. Шість кидків.
+          </div>
+
+          <button
+            onclick="handleCoinTossAuto(this)"
+            id="tossBtnAuto"
+            style="
+              background: #fff;
+              color: #000;
+              border: none;
+              padding: 12px 30px;
+              font-size: clamp(16px, 4.5vw, 18px);
+              cursor: pointer;
+              min-width: 220px;
+              margin: 0 auto 15px;
+              display: inline-block;
+              font-family: &quot;Georgia&quot;, serif;
+              border-radius: 30px;
+            "
+          >
+            Підкинути монети (1/6)
+          </button>
+          <button
+            onclick="resetDivinationAuto(this)"
+            id="resetBtnAuto"
+            style="
+              display: none;
+              background: transparent;
+              color: #fff;
+              border: 1px solid #fff;
+              padding: 10px 25px;
+              font-size: clamp(14px, 4vw, 16px);
+              cursor: pointer;
+              min-width: 200px;
+              margin: 0 auto 15px;
+              font-family: &quot;Georgia&quot;, serif;
+              border-radius: 30px;
+            "
+          >
+            ← Почати заново
+          </button>
+
+          <div
+            style="
+              display: flex;
+              flex-direction: row;
+              gap: 20px;
+              width: 100%;
+              margin-top: 15px;
+            "
+          >
+            <!-- Ліва колонка -->
+            <div style="flex: 0 0 180px; display: flex; flex-direction: column">
+              <div
+                id="coinDisplayAuto"
+                style="
+                  margin: 0 0 10px 0;
+                  min-height: 50px;
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                  gap: 8px;
+                  background: rgba(255, 255, 255, 0.1);
+                  border: 1px solid rgba(255, 255, 255, 0.15);
+                  padding: 8px;
+                  border-radius: 8px;
+                "
+              >
+                <span class="coin" id="coin1Auto">🪙</span>
+                <span class="coin" id="coin2Auto">🪙</span>
+                <span class="coin" id="coin3Auto">🪙</span>
+              </div>
+              <div
+                id="hexagramLinesAuto"
+                style="
+                  font-size: 50px;
+                  line-height: 0.8;
+                  white-space: pre;
+                  color: #fff;
+                  background: rgba(255, 255, 255, 0.1);
+                  border: 1px solid rgba(255, 255, 255, 0.15);
+                  border-radius: 8px;
+                  min-height: 200px;
+                  display: flex;
+                  flex-direction: column;
+                  justify-content: center;
+                  align-items: center;
+                  padding: 8px 3px;
+                  font-family: &quot;Arial Unicode MS&quot;, monospace;
+                "
+              ></div>
+              <div
+                id="hexagramNumberAuto"
+                style="
+                  margin: 10px 0 0 0;
+                  font-weight: bold;
+                  font-size: 16px;
+                  padding: 6px 5px;
+                  color: #fff;
+                  border-top: 1px solid #fff;
+                  border-bottom: 1px solid #fff;
+                  background: rgba(255, 255, 255, 0.1);
+                  width: 100%;
+                  text-align: center;
+                "
+              ></div>
+            </div>
+            <!-- Права колонка -->
+            <div style="flex: 1; min-width: 0">
+              <div
+                id="predictionTextAuto"
+                style="
+                  font-size: 15px;
+                  line-height: 1.5;
+                  padding: 12px;
+                  color: #ddd;
+                  background: #222;
+                  text-align: left;
+                  border-left: 3px solid #fff;
+                  width: 100%;
+                  box-sizing: border-box;
+                  min-height: 280px;
+                  overflow-y: auto;
+                  border-radius: 0 8px 8px 0;
+                  border: 1px solid #666;
+                "
+              ></div>
+            </div>
+          </div>
+        </div>
+        <div class="bw-full-block__center">
+          <button
+            class="bw-full-block__less"
+            onclick="
+              document
+                .getElementById('moreContent')
+                .classList.remove('visible');
+              document.getElementById('showMoreBtn').classList.remove('hidden');
+            "
+          >
+            МЕНЬШЕ
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+  <script src="/my-scripts/script.js"></script>
+</html>
